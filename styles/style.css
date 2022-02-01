@@ -17,6 +17,12 @@
     height: 100px;
     border-bottom: solid 2px gray;
 }
+.tab{
+    border-radius: 7px;
+    border: solid 2px gray;
+    background-color: darkgray;
+    margin: 70px;
+}
 .photo{
     width: 30%;
     float: left;
