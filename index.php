@@ -9,29 +9,26 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <?
     $t = date('H');
-    if ($t >= 20)
+    if ($t >= 20 or $t < 8)
     {
     ?>
     <link rel="stylesheet" type="text/css" href="styles/styles_hight.css">
     <?
     }
     ?>
-    <?
+    <?/*
     if ($t < 8)
     {
-    ?>
+    */?><!--
     <link rel="stylesheet" type="text/css" href="styles/styles_hight.css">
-    <?
+    --><?/*
     }
-    ?>
+    */?>
 </head>
 <body class="body">
-    <header class="header">
-        <section class="flex_menu">
-            <img class="logo" src="images/Bi_300_200.png" alt="Нет рисунка">
-            <button class="tab" type="button" name="Tab"><a href="table.html">Таблица Менделеева</a></button>
-        </section>
-    </header>
+<?
+    require "header.php";
+?>
     <main class="main">
         <div class="menu">
         </div>
@@ -81,5 +78,8 @@
             </div>
         </section>
     </main>
+<?
+require "footer.php";
+?>
 </body>
 </html>
