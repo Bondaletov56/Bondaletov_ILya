@@ -13,6 +13,7 @@
             <img class="logo" src="images/Bi_300_200.png" alt="Нет рисунка">
             <button class="tab" type="button" name="Tab"><a href="table.html">Таблица Менделеева</a></button>
             <button class="tab" type="button" name="Tab"><a href="cikl.php">DZ_9-02-2022</a></button>
+            <!--<button class="tab" type="button" name="Tab"><a href="arr_str.php">DZ_11-02-2022</a></button>-->
         </section>
     </header>
 </body>
