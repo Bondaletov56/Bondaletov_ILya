@@ -100,6 +100,7 @@
                 ?></div>
             </div>
             <?
+            function mas($info, $feedback, $fw210, $fw211, $fw212, $fw213, $gw210, $gw211, $gw212 ,$gw213){
             $col = 0;
             $ar1_info = explode(" ",$info);
             $ar1_feedback = explode(" ",$feedback);
@@ -112,31 +113,37 @@
             $ar1_gw212 = explode(" ",$gw212);
             $ar1_gw213 = explode(" ",$gw213);
             $rez =  [$ar1_info , $ar1_feedback , $ar1_fw210 , $ar1_fw211 , $ar1_fw212 , $ar1_fw213 , $ar1_gw210 , $ar1_gw211 , $ar1_gw212 , $ar1_gw213];
+            return $rez;
+            }
             ?>
         </section>
         <form class="z2">
             <fieldset>
                 <legend>Задание 2 Количество гласных букв на странице</legend>
                 <?
-                $rez1 = $rez;
-                $glasn = [а , е , ё , и , о , у , ы , э , ю , я];
-                foreach ($rez1 as $value){
-                    foreach ($value as $v){
-                     foreach ($glasn as $val) {
-                         $count = substr_count($v, $val);
-                         $zg = mb_strtoupper($val, 'UTF-8');
-                         $count += substr_count($v, $zg);
-                         if($count>0){
-                             $colglas = ($colglas + $count);
-                         }
+                $rez1 = mas($info, $feedback, $fw210, $fw211, $fw212, $fw213, $gw210, $gw211, $gw212 ,$gw213);
+                function col_glas($rez1)
+                {
+                    $glasn = [а, е, ё, и, о, у, ы, э, ю, я];
+                    foreach ($rez1 as $value) {
+                        foreach ($value as $v) {
+                            foreach ($glasn as $val) {
+                                $count = substr_count($v, $val);
+                                $zg = mb_strtoupper($val, 'UTF-8');
+                                $count += substr_count($v, $zg);
+                                if ($count > 0) {
+                                    $colglas = ($colglas + $count);
+                                }
 
-                     }
-                     //Вывод для проверки
-                     //echo $v ;
-                     //echo $colglas . "<br>";
+                            }
+                            //Вывод для проверки
+                            //echo $v ;
+                            //echo $colglas . "<br>";
+                        }
                     }
+                    return $colglas;
                 }
-                echo $colglas . "<br>";
+                    echo col_glas($rez1) . "<br>";
                 ?>
             </fieldset>
         </form>
@@ -144,13 +151,18 @@
             <fieldset>
                 <legend>Задание 3 Количесто слов на странице </legend>
                 <?
-                //print_r($rez);
-                foreach ($rez as $item){
-                    foreach ($item as $value){
-                        $col=++$col;
+                $rez2 = mas($info, $feedback, $fw210, $fw211, $fw212, $fw213, $gw210, $gw211, $gw212 ,$gw213);
+                function col_sl($rez)
+                {
+                    //print_r($rez);
+                    foreach ($rez as $item) {
+                        foreach ($item as $value) {
+                            $col = ++$col;
+                        }
                     }
+                    return $col;
                 }
-                echo $col;
+                echo col_sl($rez2);
                 ?>
             </fieldset>
         </form>
