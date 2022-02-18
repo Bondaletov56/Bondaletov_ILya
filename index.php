@@ -6,16 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <?
-    $t = date('H');
-    if ($t >= 20 or $t < 8)
-    {
-    ?>
-    <link rel="stylesheet" type="text/css" href="styles/styles_hight.css">
-    <?
-    }
-    ?>
     <?/*
     if ($t < 8)
     {
