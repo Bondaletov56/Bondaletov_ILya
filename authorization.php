@@ -1,3 +1,31 @@
+<?php
+session_start();
+obr($_POST['url']);
+function obr($a)
+{
+    if ($a == "Fact"):
+        $_SESSION ['url'] = 'Fact';
+        $s = 'https://fact.digital/';
+        header('location:' .$s);
+    elseif ($a == "Bitrix"):
+        $_SESSION ['url']  ='Bitrix';
+        $s = 'https://www.1c-bitrix.ru/';
+        header('location:' .$s);
+    endif;
+}
+//print_r($_SESSION);
+$color = $_POST['l'];
+setcookie('color', $color, time()+3600);
+$_COOKIE['color'] = $_POST['l'];
+//print_r($_COOKIE);
+if ($_COOKIE['color'] == 1):
+        $col = "red";
+elseif ($_COOKIE['color'] == 2):
+        $col = "blue";
+else: $col = "grey";
+endif;
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +39,7 @@
 <?
 require "header.php";
 ?>
+<div class = "<?echo $col?>">
     <form action="authorization.php" method="post">
         <p>
             <input type="text" name="login" placeholder="Логин"><br>
@@ -22,16 +51,22 @@ require "header.php";
             <button type="submit">Авторизация</button>
         </p>
     </form>
+</div>
 <?
 //Логин "Василий" Пароль "qwertyuiop[]"
 $login = "Василий";
 $password = 'f2ea62129a093f8a570049f0ebbc7e80';
-if ($login == $_POST['login'] && $password == md5($_POST['password'])) {
-    //require('hello_auth.php');
-    include 'hello_auth.php';
-}
- else
+if (count($_POST['login'])>0) {
+    if (($login == $_POST['login']) && $password == md5($_POST['password'])) {
+        //require('hello_auth.php');
+        include 'hello_auth.php';
+        $_SESSION['login'] = $_POST['login'];
+    } else
         echo "неверный пароль";
+}
+if (count($_SESSION['login'])>0) {
+    echo $_SESSION['login'] . " " . "Вы в последний раз посещали" . " " . $_SESSION['url'];
+}
 require "footer.php";
 ?>
 </body>

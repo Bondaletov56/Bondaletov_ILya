@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION ['login'] = $_GET['login'];
+?>
 <!doctype html>
 <html lang="en">
 <head>
