@@ -54,16 +54,11 @@ require "header.php";
 </div>
 <?
 //Логин "Василий" Пароль "qwertyuiop[]"
-$login = "Василий";
-$password = 'f2ea62129a093f8a570049f0ebbc7e80';
-if (count($_POST['login'])>0) {
-    if (($login == $_POST['login']) && $password == md5($_POST['password'])) {
-        //require('hello_auth.php');
-        include 'hello_auth.php';
-        $_SESSION['login'] = $_POST['login'];
-    } else
-        echo "неверный пароль";
-}
+$l = $_POST['login'];
+$p = $_POST['password'];
+require_once "user.php";
+$aut = new user ($l, $p);
+echo $aut ->auth();
 if (count($_SESSION['login'])>0) {
     echo $_SESSION['login'] . " " . "Вы в последний раз посещали" . " " . $_SESSION['url'];
 }
